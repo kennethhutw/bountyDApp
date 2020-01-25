@@ -12,12 +12,10 @@ As a bounty hunter, I can submit work to a bounty for review.
 
 The application lets any user create a bounty with a reward or submit a solution for an open bounty. It has the following features:
 
-- A bounty creator can create a bounty entering a bounty description,uploading a document  and setting a bounty reward in ETH
+- A bounty creator can create a bounty entering a bounty description,uploading a document on IPFS and setting a bounty reward in ETH
 - Any user can browse through the existing bounties, see the bounty problem statement, compare the bounty rewards and submit a solution for an open bounty
 - Any user can view their account to see the status of their created bounties, go through the submitted solutions and accept a solution and reviews which people submit.
-
-- The owner/administrator of the application/smart contracts can complete/cancel the application
-
+- The bounty creator can complete/cancel the bounty. The owner/administrator of the application/smart contracts cannot complete/cancel the application
 - Once the bounty creator confirm the bounty, the bounty reward will automatically be transferred to worker. On the other hand, the bounty creator cancel the bounty, the bounty reward will be returned to the bounty creator.
 
 
