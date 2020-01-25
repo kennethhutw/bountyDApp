@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Bounty dApp</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html"> Bounty dApp
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="accountList.html">Freelancers</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bounties
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="bountyList.html">Bounty List</a></li>
+            <li><a href="openBounties.html">Open Bounties</a></li>
+            <li><a href="postBounty.html">Post a Bounty</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="signup"><a href="register.html"><span class="glyphicon glyphicon-user"></span>Sign Up </a></li>
+        <li id="login"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li id="user"><a><span class="glyphicon glyphicon-user"></span><span id="useraddress">WalletAddress</span></a>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a id="network" href="networkInfo.html">Network: Not detected</a></li>
+            <li><a href="account.html">My Account</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 ">
+        <h1 class="text-center">Account Details</h1>
+        <h3 id="noAccount" class="text-center">We cannot find you! You may don't regist yet. Please signup first
+        </h3>
+        <hr />
+        <br />
+      </div>
+    </div>
+    <div id="AccountDetail">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-3">
+          <div class="box">
+            <p><strong>First name : </strong><span id="firstname"></span></p>
+            <p><strong>Last name : </strong><span id="lastname"></span></p>
+            <p><strong>EMAIL : </strong><span id="email"></span>
+            </p>
+            <p><strong>Biography</strong></p>
+            <p style="border-left: 2px solid green;padding-left: 5px;"><span id="bio">None</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 ">
+          <h3> Bounties created: </h3>
+        </div>
+        <!-- Browse Bountries -->
+        <div class="col-lg-4 ">
+          <h3> Bounties assigned: </h3>
+
+        </div>
+        <!-- Browse Freelancers -->
+        <div class="col-lg-4 col-sm-push-1">
+          <h3> User reviews: </h3>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div id="bountyCreatedRow"></div>
+          <div id="NoBountyCreated">
+            <h4 class="text-muted"> No bounty created yet</h4>
+          </div>
+        </div>
+        <!-- Browse Bountries -->
+        <div class="col-lg-4 ">
+          <div id="bountyAssignedRow"></div>
+          <div id="NoBountyAssigned">
+            <h4 class="text-muted"> No bounty assigned yet</h4>
+          </div>
+        </div>
+        <!-- Browse Freelancers -->
+        <div class="col-lg-4 col-sm-push-1">
+          <div id="reviewsRow"></div>
+          <div id="NoReceivedReviews">
+            <h4 class="text-muted"> No reviews yet</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="reviewsTemplate" style="display: none;">
+    <div class="box">
+      <p> <b>Comment: </b><span class="reviewText"></span></p>
+      <p> <b>Rating: </b><span class="stars"></span>/5</p>
+      <p> <b>From: </b><span class="reviewer"></span></p>
+      <p> <span class="seejob"></span></p>
+    </div>
+    <hr>
+  </div>
+  <div id="bountyTemplate" style="display: none;">
+    <div class="box">
+      <span class="bounty-title">Golden Retriever</span><br />
+      <p style="border-left: 2px solid #ddd;padding-left: 5px;"> <span class="bounty-dec">3</span></p>
+      <strong>Payment</strong>: Ξ <span class="bounty-payment">Warren, MI</span> (ETH)<br /><br />
+      <p style="text-align: end;"> <span class="bounty-status">Warren, MI</span></p><br />
+    </div>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/displayAccount.js"></script>
+</body>
+
+</html>

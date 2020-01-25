@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Bounty dApp</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .account-walletaddress {
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html"> Bounty dApp
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="accountList.html">Freelancers</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bounties
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="bountyList.html">Bounty List</a></li>
+            <li><a href="openBounties.html">Open Bounties</a></li>
+            <li><a href="postBounty.html">Post a Bounty</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="signup"><a href="register.html"><span class="glyphicon glyphicon-user"></span>Sign Up </a></li>
+        <li id="login"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li id="user"><a><span class="glyphicon glyphicon-user"></span><span id="useraddress">WalletAddress</span></a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a id="network" href="networkInfo.html">Network: Not detected</a></li>
+            <li><a href="account.html">My Account</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-push-2">
+        <h1 class="text-center">Account List</h1>
+        <h3 id="noFreelancers" class="text-center">There are no freelancers available</h3>
+        <hr />
+        <br />
+      </div>
+    </div>
+
+    <div id="AccountsRow" class="row">
+      <!-- PETS LOAD HERE -->
+    </div>
+  </div>
+  <div id="AccountTemplate" style="display: none;">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="panel panel-default panel-pet">
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+          <strong>Wallet Address</strong>: <span class="account-walletaddress">Golden Retriever</span><br />
+          <strong>Name</strong>: <span class="account-name">Golden Retriever</span><br />
+          <strong>Email</strong>: <span class="account-email">3</span><br />
+          <strong>Biography</strong>: <span class="account-biography">Warren, MI</span><br /><br />
+          <button class="btn btn-default btn-detail" type="button">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/accounts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Bounty dApp</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html"> Bounty dApp
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="accountList.html">Freelancers</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bounties
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="bountyList.html">Bounty List</a></li>
+            <li><a href="openBounties.html">Open Bounties</a></li>
+            <li><a href="postBounty.html">Post a Bounty</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="signup"><a href="register.html"><span class="glyphicon glyphicon-user"></span>Sign Up </a></li>
+        <li id="login"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li id="user"><a><span class="glyphicon glyphicon-user"></span><span id="useraddress">WalletAddress</span></a>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a id="network" href="networkInfo.html">Network: Not detected</a></li>
+            <li><a href="account.html">My Account</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-6 col-lg-6 col-md-offset-2">
+        <div id="bountyRow"></div>
+      </div>
+      <div class="col-sm-4 col-md-2 col-lg-3">
+        <div class="box" style="height: 100%;">
+          <h4> Employer: <span id="employerAddr"></span></h4>
+          <strong>Name : </strong><span id="name"></span></br>
+          <strong>Biography : </strong><span id="bio"></span></br>
+          <p><span id="employerPage"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-md-6 col-lg-6 col-md-offset-2">
+        <div id="showApplicants" style="display: none;">
+          <h4> Applications: </h4>
+          <div id="applicationRow"></div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-2 col-lg-3">
+        <div class="box" style="height: 100%;word-wrap: break-word !important;">
+          <h4> Reviews of Employer: </h4>
+          <div id="receivedReviewsRow">
+          </div>
+          <div id="NoReceivedReviews">
+            <h4 class="text-muted"> No reviews yet</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div id="applicationTemplate" style="display: none;">
+    <div class="row box" style="padding-top: 15px;">
+      <div class="col-sm-9">
+        <!--  <h5><a href="./account.html?{{applicant}}">{{applicant}}</a></h5> -->
+        <span class="applicant-account"></span>
+      </div>
+      <div class="col-sm-3">
+        <!--  <a class="btn btn-success" href="#" ng-click="acceptApplicant($index)"> Accept </a> -->
+        <a class="btn btn-success btn-accept" href="#"> Accept </a>
+      </div>
+    </div>
+  </div>
+  <div id="receivedReviewsTemplate" style="display: none;">
+    <div class="container m-0 p-0 border-bottom">
+      <span> <b>Comment: </b><span class="reviewText"></span></span></br>
+      <span> <b>Rating: </b><span class="stars"></span>/5</span></br>
+      <span> <b>From: </b><span class="reviewer"></span></span></br>
+    </div>
+    <hr>
+  </div>
+
+
+  <div id="bountyTemplate" style="display: none;">
+    <div class="panel panel-default panel-pet">
+      <div class="panel-heading">
+        <h3 class="panel-title">Title</h3>
+      </div>
+      <div class="panel-body">
+        <strong>Description</strong>: <span class="bounty-dec">3</span><br />
+        <strong>Payment</strong>: Ξ <span class="bounty-payment">0</span> (ETH)<br />
+        <strong>Attachment</strong>: <span class="bounty-attachment">None</span><br /><br />
+        <div id="applicantAccepted">
+
+        </div>
+        <button id="applyButton" class="btn btn-primary btn-apply" type="button" style="display: none;">Apply for this
+          bounty</button>
+        <br>
+        <div class="row col-md-12 text-center">
+
+          <button type="button" id="completeModalButton" class="btn btn-success m-1" data-toggle="modal"
+            data-target="#completeJobModal" style="display: none;">
+            Complete Job
+          </button>
+          <a class="btn btn-danger m-1" id="cancelBountyButton" href="#" style="display: none;"> Cancel bounty </a>
+
+        </div>
+        <div class="row col-md-12 text-center">
+          <button type="button" id="confirmWorkButton" class="btn btn-success m-1" style="display: none;"
+            data-toggle="modal" data-target="#completeWorkModal">
+            Confirm work completed
+          </button>
+        </div>
+        <div class="row col-md-12" style="float:right">
+          <strong>Status</strong>: <span class="bounty-status" style="text-align: end;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complete Job Modal -->
+  <div class="modal fade" id="completeJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Please leave a review!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <p><b>Comment:</b></p>
+            <textarea type="ReviewText" class="form-control" id="completeReviewTextInput"
+              placeholder="Write review here" maxlength="200" required></textarea>
+            <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
+            <br />
+            <div class="rating text-center">
+              <p><b>Rating:</b></p>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star1Complete" value="1" onclick="App.completeRating(1)" required>
+                <label for="star1Complete" class="d-block">1</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star2Complete" value="2" onclick="App.completeRating(2)" required>
+                <label for="star2Complete" class="d-block">2</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star3Complete" value="3" onclick="App.completeRating(3)" required>
+                <label for="star3Complete" class="d-block">3</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star4Complete" value="4" onclick="App.completeRating(4)" required>
+                <label for="star4Complete" class="d-block">4</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star5Complete" value="5" onclick="App.completeRating(5)" required>
+                <label for="star5Complete" class="d-block">5</label>
+              </span>
+            </div>
+            <span id="completeStarRating" ng-hide="true">1</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a class="btn btn-success" id="completeJobButton" onclick="App.completeWork()"> Submit & Complete
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complete Work Modal -->
+  <div class="modal fade" id="completeWorkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Please leave a review!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <p><b>Comment:</b></p>
+            <textarea type="reviewText" class="form-control" id="workReviewTextInput" placeholder="Write review here"
+              maxlength="200" required></textarea>
+            <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
+            <br />
+            <div class="rating text-center">
+              <p><b>Rating:</b></p>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star1Work" value="1" onclick="App.workRating(1)" required>
+                <label for="star1Work" class="d-block">1</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star2Work" value="2" onclick="App.workRating(2)" required>
+                <label for="star2Work" class="d-block">2</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star3Work" value="3" onclick="App.workRating(3)" required>
+                <label for="star3Work" class="d-block">3</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star4Work" value="4" onclick="App.workRating(4)" required>
+                <label for="star4Work" class="d-block">4</label>
+              </span>
+              <span class="text-center d-inline-block">
+                <input type="radio" name="rating" id="star5Work" value="5" onclick="App.workRating(5)" required>
+                <label for="star5Work" class="d-block">5</label>
+              </span>
+            </div>
+            <span id="workStarRating" ng-hide="true">1</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="completeWorkButton"> Submit &
+              Complete
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/bounty.js"></script>
+</body>
+
+</html>

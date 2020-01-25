@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bounty dApp</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html"> Bounty dApp
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="accountList.html">Freelancers</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bounties
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="bountyList.html">Bounty List</a></li>
+            <li><a href="openBounties.html">Open Bounties</a></li>
+            <li><a href="postBounty.html">Post a Bounty</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="signup"><a href="register.html"><span class="glyphicon glyphicon-user"></span>Sign Up </a></li>
+        <li id="login"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li id="user"><a><span class="glyphicon glyphicon-user"></span><span id="useraddress">WalletAddress</span></a>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a id="network" href="networkInfo.html">Network: Not detected</a></li>
+            <li><a href="account.html">My Account</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-push-2">
+        <h1 class="text-center">Home page</h1>
+        <hr />
+        <br />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-4 " style="background-color:white; border-radius:8px;">
+        <div class="box">
+          <h3 style="text-align:start;">Post a Bounty</h3>
+          <p>If you would like to post a Bounty click here</p>
+          <div class="row" style="text-align: center;margin-left: 0px;margin-left: 0px;">
+            <a class="btn btn-primary" href="./postBounty.html"> Post a Bounty </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-4 ">
+        <div class="box">
+          <h3 style="text-align:start;">Browse Bounties</h3 style="text-ag">
+          <p>If you would like to browse Bounties click here</p>
+          <div class="row" style="text-align: center;margin-left: 0px;">
+            <a class="btn btn-primary m-1" href="./openBounties.html"> Browse Open Bounty </a>
+            <a class="btn btn-primary m-1" style="margin-left: 10px;" href="./bountyList.html"> Browse All Bounties </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-4 ">
+        <div class="box">
+          <h3 style="text-align:start;">Browse Freelancers</h3>
+          <p>If you would like to browse users click here</p>
+          <div class="row" style="text-align: center;margin-left: 0px;">
+            <a class="btn btn-primary" href="./accountList.html"> Browse Freelancers </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-4" style="background-color:white; border-radius:8px;">
+
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-4">
+        <div class="box">
+
+          <h3 style="text-align:start;">Register Account</h3>
+          <p></p>
+          <div class="row" style="text-align: center;margin-left: 0px;">
+            <a class="btn btn-primary" href="./register.html"> Register Account </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-4">
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
