@@ -32,7 +32,7 @@ async function initWeb3() {
 
     var AccountsArtifact = await $.getJSON('Accounts.json');
     // Get the necessary contract artifact file and instantiate it with truffle-contract
-    // var AccountsArtifact = data;
+
     var Accounts = TruffleContract(AccountsArtifact);
 
     // Set the provider for our contract
@@ -42,14 +42,7 @@ async function initWeb3() {
     accountInstance = await Accounts.deployed();
 
     initAccount();
-    // Display first name if signed in.
-    /*   var user = await accountInstance.getAccount(web3.eth.defaultAccount);
-      if (user) {
-          if (user[0] !== "0x00000000000000000000000000000000") {
-              document.getElementById("welcome").innerHTML = "Welcome, " + (web3.toAscii(user[0]).replace(/\u0000/g, '')) + "!";
-              document.getElementById('welcome').setAttribute('href', 'account.html');
-          }
-      } */
+
 
 }
 
@@ -98,7 +91,71 @@ function charCount(n) {
     document.getElementById("char-count").innerHTML = total + "/500";
 }
 
-async function initAccount() {
+async function login() {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        web3Provider = window.ethereum;
+        try {
+            // Request account access
+            await window.ethereum.enable();
+        } catch (error) {
+            // User denied account access...
+            console.error("User denied account access");
+            alert("User denied account access");
+        }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+        web3Provider = window.web3.currentProvider;
+    }
+    // If no injected web3 instance is detected, fall back to Ganache
+    else {
+        //web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+    }
+
+    if (!web3Provider)
+        return;
+    web3 = new Web3(web3Provider);
+
+    var AccountsArtifact = await $.getJSON('Accounts.json');
+    // Get the necessary contract artifact file and instantiate it with truffle-contract
+
+    var Accounts = TruffleContract(AccountsArtifact);
+
+    // Set the provider for our contract
+    Accounts.setProvider(web3Provider);
+
+    // Use our contract to retrieve and mark the adopted pets
+    accountInstance = await Accounts.deployed();
+
+    if (accountInstance) {
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        var accountInfo = await accountInstance.getAccount(web3.eth.defaultAccount, { from: web3.eth.defaultAccount });
+        if (accountInfo[0] === '0x00000000000000000000000000000000') {
+            $("#signup").show();
+            $("#login").show();
+            $("#user").hide();
+            alert("You did not register on this platform. You can sign up now! ")
+            /*            $("#AccountDetail").hide();
+                       $("#noAccount").show(); */
+        }
+        else {
+            $("#signup").hide();
+            $("#login").hide();
+            $("#user").show();
+            var _account = web3.eth.defaultAccount;
+            let walletAddress = " " + _account.substring(0, 5) +
+                "...." +
+                _account.substring(_account.length - 5, _account.length);
+            $("#useraddress").text(walletAddress);
+
+        }
+    }
+
+}
+
+async function initAccount(data) {
     if (accountInstance) {
         web3.eth.defaultAccount = web3.eth.accounts[0];
 
@@ -119,8 +176,7 @@ async function initAccount() {
                 "...." +
                 _account.substring(_account.length - 5, _account.length);
             $("#useraddress").text(walletAddress);
-            /*             $("#AccountDetail").show();
-                        $("#noAccount").hide(); */
+
         }
     }
     if (App) {
