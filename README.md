@@ -26,7 +26,7 @@ To run the application locally, follow the steps,
 
 Clone the repo
 
-``` git clone https://github.com/s4ndhyac/bountyDApp.git ```
+``` git clone https://github.com/kennethhutw/bountyDApp/ ```
 
 Install the packages required
 
@@ -46,7 +46,7 @@ Compile and deploy the smart contracts
 
 Run the script to serve the application on port 3000
 
-``` npm run start ```
+``` npm run dev ```
 
 MetaMask can be installed from the [Metamask](https://metamask.io/)
 
