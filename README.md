@@ -1,6 +1,6 @@
 # Bounty dApp
 Description: Create a bounty dApp where people can post or submit work.
-
+![BountyDapp](img/home_page.png)
  
 ## User Stories:
 As a job poster, I can create a new bounty. I will set a bounty description and include the amount to be paid for a successful submission. I am able to view a list of bounties that I have already posted. By clicking on a bounty, I can review submissions that have been proposed. I can accept or reject the submitted work. Accepting proposed work will pay the submitter the deposited amount.
@@ -59,6 +59,8 @@ To run the tests, run the following command
 
 ``` truffle test ```
 
+![truffle test](img/testing_result.png)
+
 
 ## 4. Design Pattern Desicions
 
@@ -75,3 +77,19 @@ the smart contracts were deployed on the Rospten Test Network.
 [Demo site] (https://bountydapp-f7e4a.firebaseapp.com/account.html)
 
 [Video] (https://www.youtube.com/watch?v=eWcFu9NKDW8&t=7s)
+
+Or you can replace the address of json file in contract folder as below figure. 
+
+
+-- Ropsten
+Accounts.sol - contract address:    0xF2998f7a780d79f4F2D53593Add170c7E6B295E5
+
+BountyPost.sol -
+contract address:    0x858CBcc2fEB3d9D372215c29b3e929C981AB1618
+
+Reviews.sol -
+contract address: 0xAB5408fE087ec8db4577663133a13d0b028D56A9
+
+
+![replace_address](img/bountyDapp_replace_address.png)
+
