@@ -64,7 +64,7 @@ To run the tests, run the following command
 
 ## 4. Design Pattern Desicions
 
-For all the design pattern desicions, please see [design pattern desicions](./design_pattern_desicions.md)
+For all the design pattern desicions, please see [design pattern desicions](./design_pattern_decisions.md)
 
 ## 5. Avoiding Common Attacks
 
